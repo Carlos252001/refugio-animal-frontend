@@ -1,0 +1,21 @@
+<div class="container py-5">
+  <h2 class="text-center mb-4" style="color: #b64c4c;">Nuestros Peluditos</h2>
+  <p class="text-center mb-5">Cada uno de estos perritos está esperando un hogar lleno de amor. ¡Conócelos!</p>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let mascota of mascotas">
+      <div class="card h-100 shadow" style="background-color: #ffe0d1; border-radius: 20px;">
+        <img [src]="mascota.imagenURL" class="card-img-top" alt="Foto de {{mascota.nombre}}" style="height: 250px; object-fit: cover; border-radius: 20px 20px 0 0;">
+        <div class="card-body">
+          <h4 class="card-title">{{ mascota.nombre }}</h4>
+          <p>Edad: {{ mascota.edad }} años</p>
+          <p>Género: {{ mascota.genero }}</p>
+          <p>Tamaño: {{ mascota.tamano }}</p>
+        </div>
+        <div class="card-footer bg-transparent border-0 text-end">
+          <a [routerLink]="['/adoptar', mascota._id]" class="btn btn-link text-decoration-none" style="color: #b64c4c;">Adoptar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

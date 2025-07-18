@@ -1,0 +1,95 @@
+<div class="adopcion-container" [ngStyle]="{ 'background-image': 'url(https://images.unsplash.com/photo-1543852786-1cf6624b9987)', 'background-size': 'cover', 'background-position': 'center' }">
+  <div class="bg-white p-4 rounded shadow container-lg mt-4" style="max-width: 1000px; margin: auto;">
+    
+    <!-- Info Mascota -->
+    <div class="d-flex flex-wrap align-items-center mb-4">
+      <div class="col-md-6">
+        <h2 class="text-primary">{{ mascota?.nombre }}</h2>
+        <p><strong>Edad:</strong> {{ mascota?.edad }} años</p>
+        <p><strong>Género:</strong> {{ mascota?.genero }}</p>
+        <p><strong>Tamaño:</strong> {{ mascota?.tamano }}</p>
+      </div>
+      <div class="col-md-6 text-end">
+        <img [src]="mascota?.imagenURL" alt="Mascota" class="img-fluid rounded" style="max-height: 250px;">
+      </div>
+    </div>
+
+    <!-- Historia -->
+    <div class="mb-4">
+      <h5 class="text-secondary">Historia</h5>
+      <p>{{ mascota?.historia }}</p>
+    </div>
+
+    <!-- Advertencia -->
+    <div class="alert alert-warning" role="alert">
+      ⚠️ <strong>Atención:</strong> Los datos del formulario deberán ser completados por la persona que será la titular responsable del peludito.
+    </div>
+
+    <!-- Progreso del formulario -->
+    <div class="d-flex justify-content-center align-items-center mb-4">
+      <div class="step" [class.active]="paso >= 1">1</div>
+      <div class="linea"></div>
+      <div class="step" [class.active]="paso >= 2">2</div>
+      <div class="linea"></div>
+      <div class="step" [class.active]="paso >= 3">3</div>
+    </div>
+
+    <!-- Formulario multistep -->
+    <div class="formulario">
+      <ng-container [ngSwitch]="paso">
+        <!-- Paso 1 -->
+        <div *ngSwitchCase="1">
+          <input class="form-control mb-3" placeholder="Nombre completo" [(ngModel)]="formulario.nombre">
+          <input class="form-control mb-3" placeholder="Correo electrónico" [(ngModel)]="formulario.correo">
+          <input class="form-control mb-3" type="number" placeholder="Edad" [(ngModel)]="formulario.edad">
+          <input class="form-control mb-3" placeholder="Teléfono" [(ngModel)]="formulario.telefono">
+          <button class="btn btn-primary" (click)="siguientePaso()">Siguiente</button>
+        </div>
+
+        <!-- Paso 2 -->
+        <div *ngSwitchCase="2">
+          <textarea class="form-control mb-2" placeholder="¿Por qué quieres adoptar?" [(ngModel)]="formulario.motivo"></textarea>
+          <select class="form-control mb-2" [(ngModel)]="formulario.vivienda">
+            <option disabled selected>Tipo de vivienda</option>
+            <option>Casa</option>
+            <option>Departamento</option>
+            <option>Alquiler</option>
+          </select>
+          <textarea class="form-control mb-2" placeholder="¿Qué pasaría si dejas la vivienda?" [(ngModel)]="formulario.situacionCambio"></textarea>
+          <textarea class="form-control mb-2" placeholder="¿Qué harías si alguien tiene alergias?" [(ngModel)]="formulario.alergias"></textarea>
+          <input class="form-control mb-2" placeholder="Zonas de acceso para la mascota" [(ngModel)]="formulario.zonasAcceso">
+          <textarea class="form-control mb-2" placeholder="¿Estás preparado para la responsabilidad?" [(ngModel)]="formulario.preparado"></textarea>
+          <textarea class="form-control mb-2" placeholder="¿Has tenido mascotas antes? ¿Qué pasó?" [(ngModel)]="formulario.antecedentesMascota"></textarea>
+          <textarea class="form-control mb-2" placeholder="¿Qué harías durante vacaciones?" [(ngModel)]="formulario.vacaciones"></textarea>
+          <textarea class="form-control mb-2" placeholder="¿Qué harías si se porta mal?" [(ngModel)]="formulario.conductaNegativa"></textarea>
+          <input class="form-control mb-2" placeholder="¿Cuánto tiempo estará solo?" [(ngModel)]="formulario.tiempoSolo">
+
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-secondary" (click)="pasoAnterior()">Atrás</button>
+            <button class="btn btn-primary" (click)="siguientePaso()">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div *ngSwitchCase="3">
+          <input class="form-control mb-3" placeholder="¿Cómo conoció el sitio?" [(ngModel)]="formulario.descubrimiento">
+          <input class="form-control mb-3" placeholder="Distrito" [(ngModel)]="formulario.distrito">
+          <textarea class="form-control mb-3" placeholder="¿Por qué decidió adoptar ahora?" [(ngModel)]="formulario.razonActual"></textarea>
+          <input class="form-control mb-3" placeholder="¿Vive solo o acompañado?" [(ngModel)]="formulario.convivencia">
+          <input class="form-control mb-3" placeholder="¿Todos están de acuerdo con la adopción?" [(ngModel)]="formulario.acuerdo">
+
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" (click)="pasoAnterior()">Atrás</button>
+            <button class="btn btn-success" (click)="enviarFormulario()">Enviar</button>
+          </div>
+        </div>
+
+        <!-- Confirmación -->
+        <div *ngSwitchCase="4" class="text-center py-5">
+          <h4 class="text-success mb-3">✅ Formulario enviado con éxito</h4>
+          <button class="btn btn-outline-primary" (click)="reiniciar()">Volver a llenar</button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

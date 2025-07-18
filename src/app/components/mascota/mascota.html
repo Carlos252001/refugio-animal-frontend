@@ -1,0 +1,148 @@
+<!-- Formulario y tabla separados por secciones -->
+<div class="container mt-4">
+
+  <!-- 🐶 Formulario para ingresar mascotas -->
+  <div class="d-flex justify-content-end mb-3 gap-2">
+    <a [routerLink]="['/formularios']" class="btn btn-outline-secondary">
+      <i class="material-icons align-middle">assignment</i> Ver formularios
+    </a>
+    <a [routerLink]="['/admin/apadrinamientos']" class="btn btn-outline-warning">
+      <i class="material-icons align-middle">volunteer_activism</i> Ver apadrinamientos
+    </a>
+  </div> 
+
+
+
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white" style="color: #5f4b8b;">
+      <h5 class="mb-0">Registrar / Editar Mascota</h5>
+    </div>
+    <div class="card-body">
+      <form #mascotaForm="ngForm" (ngSubmit)="addMascota(mascotaForm)">
+        <input type="hidden" name="_id" [(ngModel)]="mascotaService.selectedMascota._id" />
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre" [(ngModel)]="mascotaService.selectedMascota.nombre" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <select class="form-control" name="tamano" [(ngModel)]="mascotaService.selectedMascota.tamano">
+              <option value="">Tamaño</option>
+              <option value="Pequeño">Pequeño</option>
+              <option value="Mediano">Mediano</option>
+              <option value="Grande">Grande</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <input type="number" class="form-control" name="edad" placeholder="Edad" [(ngModel)]="mascotaService.selectedMascota.edad" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <select class="form-control" name="genero" [(ngModel)]="mascotaService.selectedMascota.genero">
+              <option value="">Género</option>
+              <option value="Macho">Macho</option>
+              <option value="Hembra">Hembra</option>
+            </select>
+          </div>
+          <div class="col-md-12 mb-3">
+            <textarea class="form-control" name="historia" rows="3" placeholder="Historia"
+              [(ngModel)]="mascotaService.selectedMascota.historia"></textarea>
+          </div>
+          <div class="col-md-12 mb-3">
+            <input type="text" class="form-control" name="imagenURL" placeholder="URL de la imagen"
+              [(ngModel)]="mascotaService.selectedMascota.imagenURL" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <select class="form-control" name="estadoAdopcion"
+              [(ngModel)]="mascotaService.selectedMascota.estadoAdopcion">
+              <option value="">Estado de adopción</option>
+              <option value="disponible">Disponible</option>
+              <option value="adoptado">Adoptado</option>
+              <option value="pendiente">Pendiente</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="disponibleParaAdopcion"
+              [(ngModel)]="mascotaService.selectedMascota.disponibleParaAdopcion" id="checkAdopcion" />
+            <label class="form-check-label" for="checkAdopcion">¿Adoptable?</label>
+          </div>
+          <div class="col-md-3 mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="disponibleParaApadrinar"
+              [(ngModel)]="mascotaService.selectedMascota.disponibleParaApadrinar" id="checkApadrinar" />
+            <label class="form-check-label" for="checkApadrinar">¿Apadrinable?</label>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-3 gap-2">
+          <button class="btn btn-success" type="submit">Guardar</button>
+          <button class="btn btn-secondary" type="button" (click)="resetForm(mascotaForm)">Limpiar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 🐾 Tabla de mascotas registradas -->
+  <div class="table-responsive shadow-sm">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Género</th>
+          <th>Tamaño</th>
+          <th>Historia</th>
+          <th>Estado</th>
+          <th>Adopción</th>
+          <th>Apadrinar</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let mascota of mascotaService.mascotas">
+          <td><img [src]="mascota.imagenURL" alt="Foto" width="60" height="60" style="object-fit: cover;" /></td>
+          <td>{{ mascota.nombre }}</td>
+          <td>{{ mascota.edad }}</td>
+          <td>{{ mascota.genero }}</td>
+          <td>{{ mascota.tamano }}</td>
+          <td>
+            <button class="btn btn-outline-info btn-sm" data-bs-toggle="modal"
+              [attr.data-bs-target]="'#modalHistoria' + mascota._id">
+              Ver historia
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" [id]="'modalHistoria' + mascota._id" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Historia de {{ mascota.nombre }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                  </div>
+                  <div class="modal-body text-start">
+                    <p>{{ mascota.historia }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>{{ mascota.estadoAdopcion }}</td>
+          <td>{{ mascota.disponibleParaAdopcion ? 'Sí' : 'No' }}</td>
+          <td>{{ mascota.disponibleParaApadrinar ? 'Sí' : 'No' }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm me-1" (click)="editMascota(mascota)">
+              <i class="material-icons">edit</i>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteMascota(mascota._id!)">
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

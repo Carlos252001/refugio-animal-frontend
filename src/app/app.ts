@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MascotaComponent } from './components/mascota/mascota.component'; 
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet,MascotaComponent, RouterModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
-})
+  styleUrls: ['./app.css']
+})  
 export class App {
-  protected title = 'frontend';
+  
 }

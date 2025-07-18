@@ -1,0 +1,108 @@
+
+
+<!-- Botones principales debajo de la barra -->
+<div class="py-3 px-4 d-flex justify-content-end" style="background-color: #ffe0cc; gap: 13px; border-bottom: 1px solid #e2b8a3;">
+  <button class="btn" style="background-color: #ffd6e0; color: #333;" [routerLink]="['/peluditos']">Adoptar</button>
+  <button class="btn" style="background-color: #e06b7c; color: #333;" [routerLink]="['/apadrinamiento']">Apadrinar</button>
+  <button class="btn" style="background-color: #ff8fa3; color: #333;" [routerLink]="['/donar']">Donar</button>
+</div>
+
+<!-- Sección inicial con imagen de fondo -->
+<div style="background-image: url('https://i.postimg.cc/dt0bN5K3/paisaje3.jpg'); background-size: cover; background-position: center; min-height: 80vh; display: flex; align-items: center; color: #333;">
+  <div class="container d-flex flex-wrap align-items-center justify-content-between" style="gap: 5rem;">
+    
+    <div style="flex: 2.5; min-width: 400px; margin-top: 0cm;">
+  <div>
+    <h2 style="color: #4b3f72; font-size:4rem;">Bienvenido al Refugio</h2>
+    <p style="font-size: 1.5rem;">
+      Aquí encontrarás historias de esperanza, amor y segundas oportunidades. Conoce a nuestros peluditos y ayúdanos a cambiar sus vidas.
+    </p>
+  </div>
+
+  <!-- BOTÓN SEPARADO SIN MOVER TEXTO -->
+  <div style="margin-top: 5cm; margin-left: 4.5cm;">
+    <button style="padding: 0.7rem 1.5rem; font-size: 1.5rem; background-color: #382b2b; border: none; color: white; border-radius: 10px;" [routerLink]="['/peluditos']">
+      Conocer a nuestros peluditos
+    </button>
+  </div>
+</div>
+
+    <!-- IMAGEN (más grande sin afectar tarjeta) -->
+    <div style="flex: 1; min-width: 400px; overflow: hidden; display: flex; justify-content: center;">
+      <img src="https://i.postimg.cc/Ss5LGQLm/perro-Inicio-Portada-Photoroom.png"
+           alt="Perrito feliz"
+           style="height: 100%; max-height: 600px; object-fit: contain;">
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Reflexión sobre adopción -->
+<div class="container my-5 d-flex flex-wrap justify-content-between align-items-start" style="gap: 2rem;">
+
+  <!-- Tarjeta reflexiva a la izquierda -->
+  <div class="card shadow" style="background-color: #e06b7c; border-radius: 25px; width: 48%; font-family: 'Segoe UI', sans-serif;">
+    <div class="card-body d-flex flex-wrap align-items-center" style="gap:2rem;">
+      <div style="flex: 1; min-width: 200px;">
+        <h4 style="font-size: 1.8rem; color: #fff;">¿Estás listo para adoptar?</h4>
+        <p style="font-size: 1.1rem; color: #f8f8f8;">
+          Adoptar es un acto de amor. No solo estarás salvando una vida, sino que ganarás un compañero fiel que te agradecerá con cada mirada y cada lamida.
+        </p>
+        <button class="btn btn-light" style="font-weight: bold; padding: 0.5rem 1.5rem;" [routerLink]="['/peluditos']">Adoptar</button>
+      </div>
+      <div style="flex: 1; min-width: 200px;">
+        <img src="https://i.postimg.cc/Zq3nBTfG/perro-Inicio-Adopcion-Photoroom.png" alt="Perrito para adopción" class="img-fluid" style="max-height: 270px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Texto "Antes de adoptar" a la derecha -->
+  <div style="width: 45%; font-family: 'Segoe UI', sans-serif;">
+    <h5 style="font-size: 1.4rem; color: #5f4b8b;"><strong>Antes de adoptar, recuerda que tu nuevo amigo necesitará:</strong></h5>
+    <ul style="font-size: 1.2rem; color: #444; list-style: none; padding-left: 0;">
+      <li>✅ Amor y compañía constante</li>
+      <li>✅ Alimentación diaria y agua fresca</li>
+      <li>✅ Visitas al veterinario</li>
+      <li>✅ Vacunas y desparasitación</li>
+      <li>✅ Espacio seguro para descansar y jugar</li>
+      <li>✅ Tiempo para paseos y actividad física</li>
+    </ul>
+  </div>
+
+</div>
+
+
+<!-- Sección apadrinamiento -->
+<div class="container my-5 d-flex flex-wrap justify-content-between align-items-start" style="gap: 2rem;">
+
+  <!-- Lista de beneficios a la izquierda -->
+  <div style="width: 45%; font-family: 'Segoe UI', sans-serif; margin-top: 1.2cm;  margin-left: 1cm;">
+    <h5 style="font-size: 1.4rem; color: #4b3f72;"><strong>¿En qué se usa tu ayuda al apadrinar?</strong></h5>
+    <ul style="font-size: 1.2rem; color: #444; list-style: none; padding-left: 0;">
+      <li>✅ Alimentación balanceada</li>
+      <li>✅ Atención veterinaria y medicinas</li>
+      <li>✅ Vacunas y controles sanitarios</li>
+      <li>✅ Juguetes, camitas y abrigo</li>
+      <li>✅ Amor, cuidados y seguimiento</li>
+    </ul>
+  </div>
+
+  <!-- Tarjeta de apadrinamiento a la derecha -->
+  <div class="card shadow" style="background-color: #e06b7c; border-radius: 25px; width: 48%; font-family: 'Segoe UI', sans-serif;">
+    <div class="card-body d-flex flex-wrap align-items-center" style="gap:2rem;">
+      <div style="flex: 1; min-width: 200px;">
+        <h4 style="font-size: 1.8rem; color: #fff;">Apadrinar también salva vidas</h4>
+        <p style="font-size: 1.1rem; color: #f0f0f0;">
+          Con tu apoyo mensual, cada peludito tiene una mejor calidad de vida mientras encuentra un hogar definitivo.
+        </p>
+        <button class="btn btn-light" style="font-weight: bold; padding: 0.5rem 1.5rem;">Apadrinar</button>
+      </div>
+      <div style="flex: 1; min-width: 280px;">
+        <img src="https://i.postimg.cc/X7BDGqSN/perro-Inicio-Apadrinar.png" alt="Perrito feliz" class="img-fluid" style="max-height: 250px;">
+      </div>
+    </div>
+  </div>
+
+</div>

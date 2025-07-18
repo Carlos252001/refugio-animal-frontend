@@ -1,0 +1,85 @@
+<div class="container mt-4">
+  <h3 class="mb-4 text-center">📄 Formularios de Adopción</h3>
+
+  <div class="table-responsive shadow rounded">
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-light text-center">
+        <tr>
+          <th>Nombre</th>
+          <th>Mascota</th>
+          <th>Correo</th>
+          <th>Edad</th>
+          <th>Telefono</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let f of formularios" class="align-middle">
+          <td>{{ f.nombre }}</td>
+          <td><strong>{{ f.idMascota?.nombre || 'Mascota no encontrada' }}</strong></td>
+          <td>{{ f.correo }}</td>
+          <td>{{ f.edad }}</td>
+          <td>{{ f.telefono }}</td>
+          <td>
+            <span class="badge px-3 py-2" [ngClass]="{
+              'bg-success': f.estado === 'aprobado',
+              'bg-warning text-dark': f.estado === 'pendiente',
+              'bg-danger': f.estado === 'rechazado'
+            }">
+              {{ f.estado | titlecase }}
+            </span>
+          </td>
+          <td>
+            <div class="btn-group" role="group">
+              <button class="btn btn-sm btn-outline-info" (click)="verDetalle(f)">Ver</button>
+              <button class="btn btn-sm btn-outline-success" (click)="actualizarEstado(f._id!, 'aprobado')">✔</button>
+              <button class="btn btn-sm btn-outline-danger" (click)="actualizarEstado(f._id!, 'rechazado')">✖</button>
+              <button class="btn btn-sm btn-outline-secondary" (click)="eliminarFormulario(f._id!)">🗑</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="detalleFormularioModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title">📋 Detalles del Formulario</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" *ngIf="formularioSeleccionado">
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>1. ¿Por qué quieres adoptar?</strong> {{ formularioSeleccionado.motivo }}</p>
+              <p><strong>2. ¿Vives en alquiler, casa o piso propio?</strong> {{ formularioSeleccionado.vivienda }}</p>
+              <p><strong>3. ¿Qué pasaría si dejas la vivienda?</strong> {{ formularioSeleccionado.situacionCambio }}</p>
+              <p><strong>4. ¿Qué harías si alguien desarrolla alergia al peludito?</strong> {{ formularioSeleccionado.alergias }}</p>
+              <p><strong>5. ¿A qué zonas de la casa tendría acceso la mascota?</strong> {{ formularioSeleccionado.zonasAcceso }}</p>
+              <p><strong>6. ¿Estás preparado para la responsabilidad y los gastos?</strong> {{ formularioSeleccionado.preparado }}</p>
+              <p><strong>7. ¿Has tenido mascotas antes? ¿Qué les pasó?</strong> {{ formularioSeleccionado.antecedentesMascota }}</p>
+            </div>
+            <div class="col-md-6">
+              
+              <p><strong>8. ¿Qué harías si sales de vacaciones varios días?</strong> {{ formularioSeleccionado.vacaciones }}</p>
+              <p><strong>9. ¿Qué harías si la mascota se porta mal?</strong> {{ formularioSeleccionado.conductaNegativa }}</p>
+              <p><strong>10. ¿Cuánto tiempo aprox. estaría sola la mascota?</strong> {{ formularioSeleccionado.tiempoSolo }}</p>
+              <p><strong>11. ¿Cómo conociste este sitio web y a la mascota?</strong> {{ formularioSeleccionado.descubrimiento }}</p>
+              <p><strong>12. ¿En qué distrito vives?</strong> {{ formularioSeleccionado.distrito }}</p>
+              <p><strong>13. ¿Por qué decidiste adoptar ahora?</strong> {{ formularioSeleccionado.razonActual }}</p>
+              <p><strong>14. ¿Vives solo o acompañado?</strong> {{ formularioSeleccionado.convivencia }}</p>
+              <p><strong>15. ¿Todos están de acuerdo con la adopción?</strong> {{ formularioSeleccionado.acuerdo }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer bg-light">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

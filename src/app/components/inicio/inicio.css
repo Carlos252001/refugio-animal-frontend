@@ -1,0 +1,14 @@
+/* Paleta base */
+:root {
+  --color-durazno: #ffe0cc;
+  --color-rosa: #ffd6e0;
+  --color-menta: #d6fff2;
+  --color-azul-palido: #d6eaff;
+  --color-texto-oscuro: #4a4a4a;
+  --color-primario: #ffb3ab;
+  --color-secundario: #ffc3d6;
+  --color-boton: #ff8fa3;
+  --color-boton-hover: #e06b7c;
+  --color-fondo: #fffaf7;
+}
+

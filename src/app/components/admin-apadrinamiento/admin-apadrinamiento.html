@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h3 class="mb-4 text-center">💛 Apadrinamientos Registrados</h3>
+
+  <div class="table-responsive shadow rounded">
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-warning text-center">
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Monto</th>
+          <th>Mascota</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let a of apadrinamientos" class="align-middle">
+          <td>{{ a.nombreDonante }}</td>
+          <td>{{ a.correoDonante }}</td>
+          <td>{{ a.telefono }}</td>
+          <td>S/ {{ a.monto }}</td>
+          <td><strong>{{ a.idMascota?.nombre || 'Mascota no encontrada' }}</strong></td>
+          <td>
+            <button class="btn btn-outline-danger btn-sm" (click)="eliminarApadrinamiento(a._id)">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
