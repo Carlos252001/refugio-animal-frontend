@@ -25,7 +25,7 @@ Este proyecto representa la interfaz de usuario del sistema de adopciones y apad
 ## 🧩 Estructura del proyecto
 
 El frontend sigue una estructura modular por carpetas:
-
+```html
 📂 src/app
 ├── 📁 components # Componentes visuales reutilizables
 │ ├── mascota/ # Mostrar mascotas
@@ -44,11 +44,11 @@ El frontend sigue una estructura modular por carpetas:
 ├── app.component.ts # Componente raíz
 ├── app.module.ts # Módulo principal (importaciones)
 └── app-routing.module.ts # Ruteo entre vistas
-
+```
 ---
 
 
-##📦 Instalación
+## 📦 Instalación
 
 1. Clona este repositorio:
    ```bash
@@ -56,19 +56,19 @@ El frontend sigue una estructura modular por carpetas:
    cd nombre-repo-frontend
 2. Instala las dependencias:
 
-  ```bash
-  npm install
-  ```
+   ```bash
+   npm install
+   ```
 3. Ejecuta la aplicación:
-  ```bash
-  ng serve
-  ```
+   ```bash
+   ng serve
+   ```
 4. Abre tu navegador en:
    ```bash
    http://localhost:4200
-  `
+   ```
 
-##🤝 Autor
+## 🤝 Autor
 Desarrollado por Carlos Jesús Ocaña Huamán
 
 Proyecto académico con propósito social ❤️
