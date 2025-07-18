@@ -1,59 +1,74 @@
-# Frontend
+# 🐾 Refugio Animal - Frontend (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
+Este proyecto representa la interfaz de usuario del sistema de adopciones y apadrinamientos de mascotas del Refugio Animal. Desarrollado con **Angular**, ofrece una experiencia clara y amigable para el público general y los administradores del refugio.
 
-## Development server
+## 🚀 Características principales
 
-To start a local development server, run:
+- 🐶 Vista pública de mascotas disponibles
+- ❤️ Formulario de adopción con pasos progresivos
+- 🐕 Vista de apadrinamiento con integración de PayPal
+- 🔐 Panel administrativo para gestionar mascotas y padrinos
+- 📱 Diseño responsive usando Bootstrap 5
 
-```bash
-ng serve
-```
+## 🛠️ Tecnologías usadas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 17+
+- TypeScript
+- Bootstrap
+- RxJS
+- Angular CLI
+- HTML / SCSS
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## 🧩 Estructura del proyecto
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+El frontend sigue una estructura modular por carpetas:
 
-```bash
-ng generate --help
-```
+📂 src/app
+├── 📁 components # Componentes visuales reutilizables
+│ ├── mascota/ # Mostrar mascotas
+│ ├── adopcion/ # Proceso de adopción por mascota
+│ ├── apadrinar/ # Proceso de apadrinamiento por mascota
+│ └── admin/ # Panel de administración
+│ ├── admin-mascotas/
+│ ├── admin-apadrinamientos/
+│ └── admin-adopciones/
+├── 📁 models # Interfaces TypeScript (Mascota, Apadrinamiento, Adopcion)
+├── 📁 services # Comunicación con la API backend
+│ ├── mascota.service.ts
+│ ├── adopcion.service.ts
+│ └── apadrinamiento.service.ts
+├── 📁 assets # Archivos estáticos, imágenes, logos
+├── app.component.ts # Componente raíz
+├── app.module.ts # Módulo principal (importaciones)
+└── app-routing.module.ts # Ruteo entre vistas
 
-## Building
+---
 
-To build the project run:
 
-```bash
-ng build
-```
+##📦 Instalación
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/tu_usuario/nombre-repo-frontend.git
+   cd nombre-repo-frontend
+2. Instala las dependencias:
 
-## Running unit tests
+  ```bash
+  npm install
+  ```
+3. Ejecuta la aplicación:
+  ```bash
+  ng serve
+  ```
+4. Abre tu navegador en:
+   ```bash
+   http://localhost:4200
+  `
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+##🤝 Autor
+Desarrollado por Carlos Jesús Ocaña Huamán
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Proyecto académico con propósito social ❤️
